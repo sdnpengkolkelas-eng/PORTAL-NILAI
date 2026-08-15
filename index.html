@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRANSKRIP NILAI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at center, #0B132B 0%, #030611 100%);
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: 
+        linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+    }
+
+    .login-box {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      backdrop-filter: blur(16px);
+      padding: 35px 30px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.15), 0 20px 40px rgba(0,0,0,0.8);
+    }
+
+    .brand-title {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #00FFCC, #0099FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: #94A3B8;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      color: #00FFCC;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.7);
+      color: #FFF;
+      font-size: 14px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form-group select option {
+      background: #0B132B;
+      color: #FFF;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: #00FFCC;
+      box-shadow: 0 0 12px rgba(0, 255, 204, 0.4);
+    }
+
+    .btn-main {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #00FFCC, #00B4D8);
+      border: none;
+      border-radius: 12px;
+      color: #030611;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .toggle-role-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 12px;
+      margin-top: 20px;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: 0.3s;
+    }
+
+    .toggle-role-btn:hover {
+      color: #00FFCC;
+    }
+
+    .error-msg {
+      color: #FF4D4D;
+      font-size: 12px;
+      margin-top: 10px;
+      display: none;
+      font-weight: 700;
+    }
+
+    .view-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .match-info-bar {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 10px 25px;
+      margin-bottom: 25px;
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .match-info-bar span {
+      color: #00FFCC;
+    }
+
+    .fifa-card {
+      position: relative;
+      width: 320px;
+      height: 460px;
+      border-radius: 24px 24px 110px 110px;
+      padding: 25px 20px;
+      transform-style: preserve-3d;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      overflow: hidden;
+      animation: cardSpawn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes cardSpawn {
+      0% { opacity: 0; transform: scale(0.6) rotateY(180deg); }
+      100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+    }
+
+    .fifa-card:hover {
+      transform: translateY(-10px) rotateX(6deg) rotateY(-6deg);
+    }
+
+    .card-gold {
+      background: linear-gradient(135deg, #FFE259 0%, #FFA751 100%);
+      color: #3D2700;
+      box-shadow: 0 0 35px rgba(255, 167, 81, 0.5);
+    }
+
+    .card-silver {
+      background: linear-gradient(135deg, #E0E0E0 0%, #F5F5F5 50%, #9E9E9E 100%);
+      color: #212121;
+      box-shadow: 0 0 35px rgba(224, 224, 224, 0.4);
+    }
+
+    .card-bronze {
+      background: linear-gradient(135deg, #805215 0%, #BB7427 100%);
+      color: #FFF;
+      box-shadow: 0 0 35px rgba(187, 116, 39, 0.4);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ovr-box {
+      text-align: center;
+      line-height: 0.9;
+    }
+
+    .ovr-rating {
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .card-type {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .player-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+    }
+
+    .player-name {
+      text-align: center;
+      margin-top: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(0,0,0,0.15);
+    }
+
+    .player-name h3 {
+      font-size: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .player-absen {
+      font-size: 11px;
+      font-weight: 700;
+      opacity: 0.8;
+    }
+
+    .single-stat-box {
+      margin-top: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 15px;
+      border-radius: 12px;
+    }
+
+    .single-stat-lbl {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.85;
+    }
+
+    .single-stat-val {
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .status-badge-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .badge-status {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .badge-passed {
+      background: #00FFCC;
+      color: #030611;
+    }
+
+    .badge-remedial {
+      background: #FF0055;
+      color: #FFF;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .admin-card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      border-radius: 20px;
+      padding: 25px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .config-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      background: rgba(0, 255, 204, 0.1);
+      color: #00FFCC;
+      padding: 12px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    td input {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFF;
+      padding: 6px 10px;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 13px;
+    }
+
+    td input[type="number"] {
+      width: 80px;
+    }
+
+    .btn-action {
+      padding: 6px 12px;
+      background: #FF0055;
+      border: none;
+      color: #FFF;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .btn-add {
+      background: #00FFCC;
+      color: #030611;
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .btn-logout {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFF;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-logout:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Modal for change password */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+    }
+
+    .modal .modal-content {
+      background: rgba(15,23,42,0.98);
+      padding: 18px;
+      border-radius: 12px;
+      width: 340px;
+      color: #FFF;
+      border: 1px solid rgba(0,255,204,0.06);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+
+    .modal .modal-content h3 { margin-bottom: 10px; font-size:16px; color:#00FFCC; }
+
+    .modal .modal-actions { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
+
+    .btn-cancel { background:transparent; border:1px solid rgba(255,255,255,0.08); color:#FFF; padding:8px 10px; border-radius:8px; cursor:pointer; }
+    .btn-submit { background:#00FFCC; color:#030611; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:800; }
+  </style>
+</head>
+<body>
+
+  <!-- ================= 1. LOGIN SECTION ================= -->
+  <div class="login-box" id="loginSection">
+    <div class="brand-title">PORTAL NILAI</div>
+    <div class="brand-subtitle" id="loginSubtitle">KELAS V SD NEGERI PENGKOL</div>
+
+    <form id="studentLoginForm">
+      <div class="form-group">
+        <label>PILIH NAMA SISWA / ABSEN</label>
+        <select id="studentSelect" required>
+          <option value="" disabled selected>Memuat data dari Firebase...</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>PASSWORD SECURITY</label>
+        <input type="password" id="studentPass" placeholder="Masukkan Password Siswa" required>
+      </div>
+      <button type="submit" class="btn-main">LIHAT KARTU NILAI SISWA</button>
+    </form>
+
+    <form id="teacherLoginForm" style="display: none;">
+      <div class="form-group">
+        <label>PASSWORD ADMIN GURU</label>
+        <input type="password" id="teacherPass" placeholder="Masukkan Password Guru" required>
+      </div>
+      <button type="submit" class="btn-main">MASUK DASHBOARD GURU</button>
+    </form>
+
+    <div class="error-msg" id="loginError">Password atau Username Salah!</div>
+
+    <button class="toggle-role-btn" id="btnToggleRole">
+      Beralih ke Login Guru →
+    </button>
+  </div>
+
+  <!-- ================= 2. DASHBOARD SISWA ================= -->
+  <div class="view-container" id="studentSection">
+    <div class="match-info-bar">
+      <div>MAPEL: <span id="dispSubject">-</span></div>
+      <div>|</div>
+      <div>TANGGAL: <span id="dispDate">-</span></div>
+    </div>
+
+    <div class="fifa-card" id="fifaCard">
+      <div class="card-top">
+        <div class="ovr-box">
+          <div class="ovr-rating" id="cardOvr">0</div>
+          <div class="card-type" id="cardType">GOLD</div>
+        </div>
+        <div class="player-avatar" id="cardAvatar">👨‍🎓</div>
+      </div>
+
+      <div class="player-name">
+        <h3 id="cardName">NAMA SISWA</h3>
+        <div class="player-absen" id="cardAbsen">NO ABSEN: -</div>
+      </div>
+
+      <div class="single-stat-box">
+        <div class="single-stat-lbl" id="lblBab">NILAI ULANGAN HARIAN</div>
+        <div class="single-stat-val" id="valBab">0</div>
+      </div>
+
+      <div class="status-badge-container">
+        <span class="badge-status" id="cardBadge">STATUS</span>
+      </div>
+    </div>
+
+    <button class="btn-logout" id="btnLogoutStudent">← Keluar Halaman Siswa</button>
+  </div>
+
+  <!-- ================= 3. DASHBOARD GURU ================= -->
+  <div class="view-container" id="teacherSection">
+    <div class="admin-card">
+      <div class="admin-header">
+        <div>
+          <h2 style="color: #00FFCC; font-size: 20px;">DASHBOARD GURU / ADMIN</h2>
+          <p style="font-size: 12px; color: #94A3B8;">Terhubung Langsung ke Firebase Realtime Database</p>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="btn-logout" id="btnLogoutTeacher" style="margin-top: 0;">Logout Guru</button>
+          <button class="btn-main" id="btnChangeTeacherPass" style="background: linear-gradient(90deg,#FFB86B,#FF7BAC); padding:6px 10px; font-size:12px; border-radius:12px;">Ubah Password</button>
+        </div>
+      </div>
+
+      <div class="config-panel">
+        <div class="form-group" style="margin:0;">
+          <label>MATA PELAJARAN</label>
+          <input type="text" id="cfgSubject">
+        </div>
+        <div class="form-group" style="margin:0;">
+          <label>TANGGAL ULANGAN</label>
+          <input type="text" id="cfgDate">
+        </div>
+        <div class="form-group" style="margin:0;">
+          <label>JUDUL BAB / MATERI</label>
+          <input type="text" id="cfgBab">
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>No Absen</th>
+              <th>Nama Siswa</th>
+              <th>Password</th>
+              <th id="thBab">Nilai Bab</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+
+      <button class="btn-add" id="btnAddStudent">+ Tambah Siswa Baru</button>
+    </div>
+  </div>
+
+  <!-- FIREBASE MODULE INTEGRATION -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    // Konfigurasi Firebase Resmi Anda
+    const firebaseConfig = {
+      apiKey: "AIzaSyAEuTxM0xGYS_P8NBavKDXX_KbqkqLwsSY",
+      authDomain: "transkrip-nilai-1f0ea.firebaseapp.com",
+      databaseURL: "https://transkrip-nilai-1f0ea-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "transkrip-nilai-1f0ea",
+      storageBucket: "transkrip-nilai-1f0ea.firebasestorage.app",
+      messagingSenderId: "849168637324",
+      appId: "1:849168637324:web:2e5a0a5df8587cb7e3caa9",
+      measurementId: "G-D47RFLMK7Y"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    let isTeacherMode = false;
+    let teacherPassword = "admin"; // Password default Guru
+
+    let configData = {
+      subject: "MATEMATIKA",
+      date: "15 AGUSTUS 2026",
+      bab: "ALJABAR & GEOMETRI"
+    };
+
+    let studentDatabase = [
+      { id: "01", name: "Ahmad Budi", pass: "1234", score: 90, avatar: "👨‍🎓" }
+    ];
+
+    // Realtime Listener Config dari Firebase
+    onValue(ref(db, 'config'), (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        configData = data;
+        if(isTeacherMode) {
+          document.getElementById("cfgSubject").value = configData.subject || "";
+          document.getElementById("cfgDate").value = configData.date || "";
+          document.getElementById("cfgBab").value = configData.bab || "";
+        }
+      } else {
+        set(ref(db, 'config'), configData);
+      }
+    });
+
+    // Realtime Listener Data Siswa dari Firebase
+    onValue(ref(db, 'students'), (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        studentDatabase = data;
+      } else {
+        set(ref(db, 'students'), studentDatabase);
+      }
+      populateStudentDropdown();
+      if(isTeacherMode) renderStudentTable();
+    });
+
+    function populateStudentDropdown() {
+      const select = document.getElementById("studentSelect");
+      select.innerHTML = '<option value="" disabled selected>-- Pilih Siswa --</option>';
+      studentDatabase.forEach(student => {
+        const option = document.createElement("option");
+        option.value = student.id;
+        option.textContent = student.name;
+        select.appendChild(option);
+      });
+    }
+
+    document.getElementById("btnToggleRole").addEventListener("click", () => {
+      isTeacherMode = !isTeacherMode;
+      const subtitle = document.getElementById("loginSubtitle");
+      const btnToggle = document.getElementById("btnToggleRole");
+      const studentForm = document.getElementById("studentLoginForm");
+      const teacherForm = document.getElementById("teacherLoginForm");
+      document.getElementById("loginError").style.display = "none";
+
+      if (isTeacherMode) {
+        subtitle.innerText = "PORTAL GURU • DASHBOARD ADMIN";
+        studentForm.style.display = "none";
+        teacherForm.style.display = "block";
+        btnToggle.innerText = "← Beralih ke Login Siswa";
+      } else {
+        subtitle.innerText = "PORTAL SISWA • ULANGAN HARIAN";
+        studentForm.style.display = "block";
+        teacherForm.style.display = "none";
+        btnToggle.innerText = "Beralih ke Login Guru →";
+      }
+    });
+
+    document.getElementById("teacherLoginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const inputPass = document.getElementById("teacherPass").value.trim();
+      const errorMsg = document.getElementById("loginError");
+
+      if (inputPass === teacherPassword) {
+        errorMsg.style.display = "none";
+        showTeacherDashboard();
+      } else {
+        errorMsg.innerText = "Password Guru Salah! (Default: admin)";
+        errorMsg.style.display = "block";
+      }
+    });
+
+    document.getElementById("studentLoginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const selectedId = document.getElementById("studentSelect").value;
+      const inputPass = document.getElementById("studentPass").value.trim();
+      const errorMsg = document.getElementById("loginError");
+
+      const student = studentDatabase.find(s => s.id === selectedId && s.pass === inputPass);
+      if (student) {
+        errorMsg.style.display = "none";
+        showStudentCard(student);
+      } else {
+        errorMsg.innerText = "Password Siswa Salah!";
+        errorMsg.style.display = "block";
+      }
+    });
+
+    function showStudentCard(student) {
+      document.getElementById("loginSection").style.display = "none";
+      document.getElementById("studentSection").style.display = "flex";
+
+      document.getElementById("dispSubject").innerText = configData.subject;
+      document.getElementById("dispDate").innerText = configData.date;
+      document.getElementById("lblBab").innerText = configData.bab;
+      document.getElementById("valBab").innerText = student.score;
+
+      document.getElementById("cardName").innerText = student.name;
+      document.getElementById("cardAbsen").innerText = `NO ABSEN: ${student.id}`;
+      document.getElementById("cardAvatar").innerText = student.avatar || "👨‍🎓";
+
+      const score = parseInt(student.score);
+      document.getElementById("cardOvr").innerText = score;
+
+      const card = document.getElementById("fifaCard");
+      const badge = document.getElementById("cardBadge");
+      const cardType = document.getElementById("cardType");
+
+      if (score >= 85) {
+        card.className = "fifa-card card-gold";
+        cardType.innerText = "GOLD";
+      } else if (score >= 75) {
+        card.className = "fifa-card card-silver";
+        cardType.innerText = "SILVER";
+      } else {
+        card.className = "fifa-card card-bronze";
+        cardType.innerText = "BRONZE";
+      }
+
+      if (score < 75) {
+        badge.innerText = "⚠️ TUNTUTAN REMIDI / MENGULANG";
+        badge.className = "badge-status badge-remedial";
+      } else {
+        badge.innerText = "LULUS / KUALIFIKASI AMAN 🏆";
+        badge.className = "badge-status badge-passed";
+      }
+    }
+
+    function showTeacherDashboard() {
+      document.getElementById("loginSection").style.display = "none";
+      document.getElementById("teacherSection").style.display = "flex";
+
+      document.getElementById("cfgSubject").value = configData.subject;
+      document.getElementById("cfgDate").value = configData.date;
+      document.getElementById("cfgBab").value = configData.bab;
+
+      renderStudentTable();
+    }
+
+    function saveConfigToFirebase() {
+      configData.subject = document.getElementById("cfgSubject").value.toUpperCase();
+      configData.date = document.getElementById("cfgDate").value.toUpperCase();
+      configData.bab = document.getElementById("cfgBab").value.toUpperCase();
+      set(ref(db, 'config'), configData);
+    }
+
+    document.getElementById("cfgSubject").addEventListener("change", saveConfigToFirebase);
+    document.getElementById("cfgDate").addEventListener("change", saveConfigToFirebase);
+    document.getElementById("cfgBab").addEventListener("change", saveConfigToFirebase);
+
+    function renderStudentTable() {
+      document.getElementById("thBab").innerText = configData.bab;
+      const tbody = document.getElementById("studentTableBody");
+      tbody.innerHTML = "";
+
+      studentDatabase.forEach((student, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><input type="text" value="${student.id}" data-idx="${index}" data-field="id" class="db-input"></td>
+          <td><input type="text" value="${student.name}" data-idx="${index}" data-field="name" class="db-input"></td>
+          <td><input type="text" value="${student.pass}" data-idx="${index}" data-field="pass" class="db-input"></td>
+          <td><input type="number" value="${student.score}" data-idx="${index}" data-field="score" class="db-input"></td>
+          <td><button class="btn-action btn-del" data-idx="${index}">Hapus</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.querySelectorAll(".db-input").forEach(input => {
+        input.addEventListener("change", (e) => {
+          const idx = e.target.dataset.idx;
+          const field = e.target.dataset.field;
+          const val = e.target.value;
+          
+          if(field === 'score') {
+            studentDatabase[idx][field] = parseInt(val) || 0;
+          } else {
+            studentDatabase[idx][field] = val;
+          }
+          set(ref(db, 'students'), studentDatabase);
+        });
+      });
+
+      document.querySelectorAll(".btn-del").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.target.dataset.idx;
+          if(confirm("Yakin ingin menghapus siswa ini?")) {
+            studentDatabase.splice(idx, 1);
+            set(ref(db, 'students'), studentDatabase);
+          }
+        });
+      });
+    }
+
+    document.getElementById("btnAddStudent").addEventListener("click", () => {
+      const nextId = String(studentDatabase.length + 1).padStart(2, '0');
+      studentDatabase.push({
+        id: nextId,
+        name: "Siswa Baru",
+        pass: "1234",
+        score: 75,
+        avatar: "👨‍🎓"
+      });
+      set(ref(db, 'students'), studentDatabase);
+    });
+
+    function logout() {
+      document.getElementById("studentSection").style.display = "none";
+      document.getElementById("teacherSection").style.display = "none";
+      document.getElementById("loginSection").style.display = "block";
+
+      document.getElementById("studentSelect").selectedIndex = 0;
+      document.getElementById("studentPass").value = "";
+      document.getElementById("teacherPass").value = "";
+      document.getElementById("loginError").style.display = "none";
+    }
+
+    document.getElementById("btnLogoutStudent").addEventListener("click", logout);
+
+    // Logout khusus untuk guru: tampilkan halaman awal dan reload agar benar-benar kembali ke awal aplikasi
+    function logoutTeacher() {
+      logout();
+      window.location.href = window.location.pathname;
+    }
+
+    // Fungsi untuk mengubah password guru (sederhana, tidak persist ke server)
+    function changeTeacherPassword() {
+      document.getElementById('changePassModal').style.display = 'flex';
+      document.getElementById('modalCurrentPass').value = '';
+      document.getElementById('modalNewPass').value = '';
+      document.getElementById('modalConfirmPass').value = '';
+    }
+
+    document.getElementById("btnLogoutTeacher").addEventListener("click", logoutTeacher);
+    const btnChange = document.getElementById("btnChangeTeacherPass");
+    if (btnChange) btnChange.addEventListener("click", changeTeacherPassword);
+
+    // Modal handlers
+    const modal = document.createElement('div');
+    modal.innerHTML = `
+      <div id="changePassModal" class="modal">
+        <div class="modal-content">
+          <h3>Ubah Password Guru</h3>
+          <div class="form-group">
+            <label>Masukkan Password Saat Ini</label>
+            <input type="password" id="modalCurrentPass" />
+          </div>
+          <div class="form-group">
+            <label>Password Baru</label>
+            <input type="password" id="modalNewPass" />
+          </div>
+          <div class="form-group">
+            <label>Konfirmasi Password Baru</label>
+            <input type="password" id="modalConfirmPass" />
+          </div>
+          <div class="modal-actions">
+            <button id="btnCancelChangePass" class="btn-cancel">Batal</button>
+            <button id="btnSubmitChangePass" class="btn-submit">Simpan</button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    document.getElementById('btnCancelChangePass').addEventListener('click', () => {
+      document.getElementById('changePassModal').style.display = 'none';
+    });
+
+    document.getElementById('btnSubmitChangePass').addEventListener('click', () => {
+      const current = document.getElementById('modalCurrentPass').value || '';
+      const newPass = document.getElementById('modalNewPass').value || '';
+      const confirm = document.getElementById('modalConfirmPass').value || '';
+      if (current !== teacherPassword) { alert('Password saat ini salah.'); return; }
+      if (!newPass.trim()) { alert('Password baru tidak boleh kosong.'); return; }
+      if (newPass !== confirm) { alert('Konfirmasi password tidak cocok.'); return; }
+      teacherPassword = newPass.trim();
+      alert('Password guru berhasil diubah.');
+      document.getElementById('teacherPass').value = '';
+      document.getElementById('changePassModal').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
