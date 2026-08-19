@@ -972,7 +972,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       padding: 28px 16px;
       overflow-x: hidden;
@@ -1077,6 +1077,17 @@
     .teacher-subject-button { min-height: 42px; padding: 9px 14px; border: 1px solid #c9e2d9; border-radius: 11px; background: #fff; color: var(--muted); cursor: pointer; font-size: 12px; font-weight: 800; transition: .2s ease; }
     .teacher-subject-button:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
     .teacher-subject-button.active { border-color: var(--accent); background: var(--accent); color: #fff; box-shadow: 0 8px 16px rgba(25,122,103,.18); }
+    .teacher-identity-panel { margin-top: 18px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 10px 24px rgba(35,61,56,.07); }
+    .teacher-identity-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .teacher-identity-header h3 { color: var(--ink); font-size: 16px; }
+    .teacher-identity-header p { margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .teacher-identity-header span { color: var(--accent); font-size: 11px; font-weight: 800; white-space: nowrap; }
+    .teacher-identity-panel .table-responsive { margin-top: 0; }
+    .teacher-identity-panel table { min-width: 520px; }
+    .teacher-identity-panel th:first-child, .teacher-identity-panel td:first-child { width: 110px; min-width: 110px; }
+    .teacher-identity-panel th:nth-child(2), .teacher-identity-panel td:nth-child(2) { width: 55%; }
+    .teacher-identity-panel th:nth-child(3), .teacher-identity-panel td:nth-child(3) { width: 180px; min-width: 180px; }
+    .subject-input-note { margin: 0 0 10px; color: var(--muted); font-size: 11px; }
     .subject-input-page { display: none; width: 100%; max-width: 1200px; }
     .subject-input-page-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 14px 32px rgba(35,61,56,.1); }
     .subject-input-page-header h2 { margin: 0; color: var(--ink); font-size: 20px; }
@@ -1184,6 +1195,96 @@
       .teacher-input-toolbar { align-items: stretch; }
       .teacher-input-toolbar label, .teacher-input-toolbar select { width: 100%; }
     }
+
+    @media (max-width: 560px) {
+      .admin-card .table-responsive,
+      .subject-page-table .table-responsive {
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-top: 8px;
+      }
+
+      .admin-card table,
+      .admin-card thead,
+      .admin-card tbody,
+      .admin-card tr,
+      .admin-card th,
+      .admin-card td,
+      .subject-page-table table,
+      .subject-page-table thead,
+      .subject-page-table tbody,
+      .subject-page-table tr,
+      .subject-page-table th,
+      .subject-page-table td {
+        display: revert;
+        width: auto;
+      }
+
+      .admin-card table,
+      .subject-page-table table {
+        min-width: 520px;
+        table-layout: auto;
+      }
+
+      .admin-card tbody,
+      .subject-page-table tbody {
+        padding: 0;
+      }
+
+      .admin-card tr,
+      .subject-page-table tr {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .admin-card th,
+      .admin-card td,
+      .subject-page-table th,
+      .subject-page-table td {
+        display: table-cell;
+        width: auto;
+        white-space: nowrap;
+        padding: 10px 12px;
+      }
+
+      .admin-card td::before,
+      .subject-page-table td::before {
+        display: none;
+      }
+
+      .admin-card td input,
+      .subject-page-table td input {
+        width: 100%;
+      }
+
+      .subject-page-table th:first-child,
+      .subject-page-table td:first-child {
+        width: 104px;
+        min-width: 104px;
+      }
+
+      .subject-page-table td:first-child input {
+        max-width: 80px;
+      }
+
+      .teacher-identity-panel table {
+        min-width: 520px;
+      }
+
+      .teacher-identity-panel th:first-child,
+      .teacher-identity-panel td:first-child {
+        width: 104px;
+        min-width: 104px;
+      }
+
+      .teacher-identity-panel th:nth-child(3),
+      .teacher-identity-panel td:nth-child(3) {
+        width: 150px;
+        min-width: 150px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1290,6 +1391,17 @@
       <div class="teacher-subject-workspace">
         <div class="teacher-subject-nav" id="teacherSubjectNav" aria-label="Pilih mata pelajaran"></div>
       </div>
+
+      <div class="teacher-identity-panel">
+        <div class="teacher-identity-header">
+          <div>
+            <h3>Identitas Siswa</h3>
+            <p>Kelola nomor absen, nama siswa, dan password.</p>
+          </div>
+          <span id="teacherIdentityCount">0 siswa</span>
+        </div>
+        <div class="table-responsive" id="studentIdentityTable"></div>
+      </div>
     </div>
   </div>
 
@@ -1316,6 +1428,7 @@
     <div class="teacher-input-toolbar">
       <div class="input-progress" id="subjectPageProgress"><strong>Siap mengisi nilai</strong>Perubahan tersimpan otomatis</div>
     </div>
+    <div class="subject-input-note">Tabel ini hanya untuk memasukkan nilai mata pelajaran yang dipilih.</div>
     <div class="subject-page-table" id="subjectPageTable"></div>
     <button class="btn-add" id="btnAddStudentFromSubject" type="button">+ Tambah Siswa Baru</button>
   </div>
@@ -1959,7 +2072,38 @@
       document.getElementById("btnBackTeacherDashboard").click();
     });
 
+    function renderStudentIdentityTable() {
+      const container = document.getElementById("studentIdentityTable");
+      const count = document.getElementById("teacherIdentityCount");
+      if (!container) return;
+
+      if (count) count.innerText = `${studentDatabase.length} siswa`;
+      const rows = studentDatabase.map((student, index) => {
+        const normalized = normalizeStudent(student);
+        return `<tr>
+          <td data-label="No Absen"><input type="text" value="${normalized.id}" data-idx="${index}" data-field="id" class="db-input"></td>
+          <td data-label="Nama Siswa"><input type="text" value="${normalized.name}" data-idx="${index}" data-field="name" class="db-input"></td>
+          <td data-label="Password"><input type="text" value="${normalized.pass}" data-idx="${index}" data-field="pass" class="db-input"></td>
+        </tr>`;
+      }).join("");
+
+      container.innerHTML = `<table>
+        <thead><tr><th>No Absen</th><th>Nama Siswa</th><th>Password</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+
+      container.querySelectorAll(".db-input").forEach(input => input.addEventListener("change", (event) => {
+        const index = event.target.dataset.idx;
+        const field = event.target.dataset.field;
+        if (!studentDatabase[index] || !["name", "pass", "id"].includes(field)) return;
+        studentDatabase[index][field] = event.target.value;
+        set(ref(db, "students"), studentDatabase);
+        renderStudentIdentityTable();
+      }));
+    }
+
     function renderStudentTable() {
+      renderStudentIdentityTable();
       const configuredSubjects = getConfiguredSubjects();
       const subjectList = configuredSubjects.filter(subject => subject.name === activeTeacherSubject);
       const container = document.getElementById("subjectPageTable");
@@ -1987,16 +2131,14 @@
           return `<tr>
             <td data-label="No Absen"><input type="text" value="${normalized.id}" data-idx="${index}" data-field="id" class="db-input"></td>
             <td data-label="Nama Siswa"><input type="text" value="${normalized.name}" data-idx="${index}" data-field="name" class="db-input"></td>
-            <td data-label="Password"><input type="text" value="${normalized.pass}" data-idx="${index}" data-field="pass" class="db-input"></td>
             <td data-label="Nilai ${subject.name}"><input type="number" min="0" max="100" value="${getStudentScore(normalized, subject.name)}" data-idx="${index}" data-subject="${subject.name}" data-field="score" class="db-input"></td>
-            <td data-label="Aksi"><button class="btn-action btn-del" data-idx="${index}">Hapus</button></td>
           </tr>`;
         }).join("");
 
         return `<section class="subject-input-section">
           <div class="subject-input-heading"><h3>${subject.name}</h3><span>${subjectMeta}</span></div>
           <div class="table-responsive"><table>
-            <thead><tr><th>No Absen</th><th>Nama Siswa</th><th>Password</th><th>Nilai ${subject.name}</th><th>Aksi</th></tr></thead>
+            <thead><tr><th>No Absen</th><th>Nama Siswa</th><th>Nilai ${subject.name}</th></tr></thead>
             <tbody>${rows}</tbody>
           </table></div>
         </section>`;
