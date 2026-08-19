@@ -969,7 +969,11 @@
     body {
       background: linear-gradient(145deg, #e7f4ef 0%, #f7f9f7 46%, #e9eef3 100%);
       color: var(--ink);
-      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       padding: 28px 16px;
       overflow-x: hidden;
     }
@@ -1159,8 +1163,23 @@
     @media (max-width: 560px) {
       body { padding: 14px 10px; }
       .admin-card, .announcement-panel { padding: 16px 12px; }
-      .score-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; perspective: none; }
-      .fifa-card, .score-grid .fifa-card { max-width: 100%; min-height: 320px; }
+      .score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; perspective: none; }
+      .fifa-card, .score-grid .fifa-card { max-width: 100%; min-height: 330px; padding: 12px 10px 14px; }
+      .score-grid .card-meta { gap: 5px; padding: 8px 5px; }
+      .score-grid .card-meta-item { font-size: 8px; letter-spacing: 0.03em; }
+      .score-grid .card-meta-item strong { font-size: 8px; }
+      .score-grid .ovr-box { min-width: 52px; padding: 6px 5px 7px; }
+      .score-grid .ovr-rating { font-size: 30px; }
+      .score-grid .card-type { font-size: 8px; }
+      .score-grid .player-avatar { width: 52px; height: 52px; font-size: 24px; }
+      .score-grid .player-name { margin-top: 10px; padding: 10px 4px 8px; }
+      .score-grid .player-name h3 { font-size: 12px; letter-spacing: 0.02em; }
+      .score-grid .player-absen { font-size: 8px; }
+      .score-grid .single-stat-box { margin-top: 10px; padding: 9px 5px 8px; }
+      .score-grid .single-stat-lbl { font-size: 8px; letter-spacing: 0.04em; }
+      .score-grid .single-stat-val { font-size: 26px; }
+      .score-grid .status-badge-container { margin-top: 14px; }
+      .score-grid .badge-status { padding: 6px 5px; font-size: 8px; letter-spacing: 0.03em; }
       .fifa-card:hover, .score-grid .fifa-card:hover { transform: translateY(-4px); }
       .teacher-input-toolbar { align-items: stretch; }
       .teacher-input-toolbar label, .teacher-input-toolbar select { width: 100%; }
