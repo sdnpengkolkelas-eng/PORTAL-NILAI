@@ -1,0 +1,17 @@
+{
+  "name": "Portal Nilai Kelas 5",
+  "short_name": "Portal Nilai",
+  "description": "Aplikasi portal nilai kelas 5 sekolah",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0B132B",
+  "theme_color": "#8CDBB2",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
