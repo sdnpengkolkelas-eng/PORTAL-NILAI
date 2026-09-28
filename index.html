@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#8CDBB2">
+  <meta name="theme-color" content="#0077B6">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="msapplication-TileColor" content="#8CDBB2">
+  <meta name="msapplication-TileColor" content="#0077B6">
   <title>TRANSKRIP NILAI</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
@@ -126,7 +126,7 @@
     }
 
     .toggle-role-btn:hover {
-      color: #00FFCC;
+      color: var(--accent);
     }
 
     .error-msg {
@@ -752,12 +752,12 @@
       box-shadow: 0 8px 30px rgba(0,0,0,0.6);
     }
 
-    .modal .modal-content h3 { margin-bottom: 10px; font-size:16px; color:#00FFCC; }
+    .modal .modal-content h3 { margin-bottom: 10px; font-size:16px; color:#00B4D8; }
 
     .modal .modal-actions { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
 
     .btn-cancel { background:transparent; border:1px solid rgba(255,255,255,0.08); color:#FFF; padding:8px 10px; border-radius:8px; cursor:pointer; }
-    .btn-submit { background:#00FFCC; color:#030611; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:800; }
+    .btn-submit { background:#0077B6; color:#fff; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:800; }
 
     @media (max-width: 560px) {
       body {
@@ -948,14 +948,14 @@
 
     /* Modern application surface */
     :root {
-      --ink: #17212b;
-      --muted: #667482;
-      --paper: #f6f8f7;
+      --ink: #03045E;
+      --muted: #405A73;
+      --paper: #CAF0F8;
       --surface: rgba(255, 255, 255, 0.94);
-      --line: #dce6e2;
-      --accent: #197a67;
-      --accent-soft: #dff3ec;
-      --warning: #b86b17;
+      --line: #90E0EF;
+      --accent: #0077B6;
+      --accent-soft: #CAF0F8;
+      --warning: #03045E;
     }
 
     *, button, input, select, textarea {
@@ -967,7 +967,7 @@
     }
 
     body {
-      background: linear-gradient(145deg, #e7f4ef 0%, #f7f9f7 46%, #e9eef3 100%);
+      background: linear-gradient(145deg, #CAF0F8 0%, #ffffff 48%, #90E0EF 100%);
       color: var(--ink);
       display: flex;
       flex-direction: column;
@@ -986,13 +986,13 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: linear-gradient(145deg, #dff3ec, #f8faf9);
+      background: linear-gradient(145deg, #CAF0F8, #ffffff);
       transition: opacity .35s ease, visibility .35s ease;
     }
     .opening-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .opening-logo { width: min(48vw, 280px); aspect-ratio: 1; object-fit: contain; filter: drop-shadow(0 14px 20px rgba(25, 65, 55, .16)); }
+    .opening-logo { width: min(48vw, 280px); aspect-ratio: 1; object-fit: contain; filter: drop-shadow(0 14px 20px rgba(3, 4, 94, .16)); }
     .opening-brand { margin-top: 14px; color: var(--accent); font-size: 14px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    .opening-loader { width: 140px; height: 4px; margin-top: 16px; overflow: hidden; border-radius: 99px; background: #cfe6de; }
+    .opening-loader { width: 140px; height: 4px; margin-top: 16px; overflow: hidden; border-radius: 99px; background: #90E0EF; }
     .opening-loader::after { content: ""; display: block; width: 40%; height: 100%; border-radius: inherit; background: var(--accent); animation: loadingBar 1.2s ease-in-out infinite; }
     @keyframes loadingBar { from { transform: translateX(-120%); } to { transform: translateX(360%); } }
 
@@ -1016,8 +1016,8 @@
     }
 
     .login-box { position: relative; isolation: isolate; overflow: hidden; width: min(100%, 430px); margin: auto; padding: 36px 34px 30px; border-radius: 24px; background: rgba(255,255,255,.88); box-shadow: 0 26px 70px rgba(35,61,56,.16), 0 2px 5px rgba(35,61,56,.06); }
-    .login-box::before { content: ""; position: absolute; inset: 0 0 auto; height: 7px; background: linear-gradient(90deg, #197a67, #79c8b4); }
-    .login-box::after { content: ""; position: absolute; z-index: -1; top: -72px; right: -48px; width: 170px; height: 170px; border: 1px solid rgba(25,122,103,.12); border-radius: 50%; box-shadow: 0 0 0 18px rgba(25,122,103,.035), 0 0 0 38px rgba(25,122,103,.025); }
+    .login-box::before { content: ""; position: absolute; inset: 0 0 auto; height: 7px; background: linear-gradient(90deg, #03045E, #0077B6, #00B4D8); }
+    .login-box::after { content: ""; position: absolute; z-index: -1; top: -72px; right: -48px; width: 170px; height: 170px; border: 1px solid rgba(0,119,182,.12); border-radius: 50%; box-shadow: 0 0 0 18px rgba(0,119,182,.035), 0 0 0 38px rgba(0,119,182,.025); }
     .brand-title, .announcement-title { color: var(--ink); background: none; -webkit-text-fill-color: initial; font-size: 26px; letter-spacing: .08em; }
     .brand-title::before { content: "PORTAL SISWA"; display: block; margin-bottom: 10px; color: var(--accent); font-size: 10px; font-weight: 900; letter-spacing: .16em; }
     .brand-subtitle, .admin-header p { color: var(--muted) !important; }
@@ -1025,28 +1025,28 @@
     .login-box .form-group { margin-bottom: 18px; }
     .login-box .form-group label { margin-bottom: 8px; font-size: 10px; letter-spacing: .12em; }
     .form-group input, .form-group select, td input, .subject-config-card input {
-      background: #f8fbfa;
+      background: #f5fcff;
       border-color: var(--line);
       color: var(--ink);
     }
-    .login-box .form-group input, .login-box .form-group select { min-height: 48px; border-radius: 12px; background: #f7faf9; box-shadow: inset 0 1px 2px rgba(35,61,56,.03); }
+    .login-box .form-group input, .login-box .form-group select { min-height: 48px; border-radius: 12px; background: #f5fcff; box-shadow: inset 0 1px 2px rgba(3,4,94,.04); }
     .login-box #studentPass, .login-box #teacherPass { min-height: 42px; height: 42px; padding: 8px 12px; border-radius: 10px; font-size: 13px; }
     .form-group select option { background: #fff; color: var(--ink); }
-    .form-group input:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(25, 122, 103, 0.12); }
-    .btn-main, .btn-add { background: var(--accent); color: #fff; box-shadow: 0 8px 16px rgba(25,122,103,.16); text-transform: none; letter-spacing: 0; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.14); }
+    .btn-main, .btn-add { background: var(--accent); color: #fff; box-shadow: 0 8px 16px rgba(0,119,182,.18); text-transform: none; letter-spacing: 0; }
     .login-box .btn-main { min-height: 50px; margin-top: 6px; border-radius: 12px; font-size: 13px; font-weight: 800; }
-    .btn-main:hover, .btn-add:hover { background: #12604f; box-shadow: 0 12px 22px rgba(25, 122, 103, 0.22); }
+    .btn-main:hover, .btn-add:hover { background: #03045E; box-shadow: 0 12px 22px rgba(3, 4, 94, 0.18); }
     .toggle-role-btn, .btn-logout { color: var(--muted); }
     .admin-card { padding: 28px; }
     .announcement-panel { padding: 24px; }
-    .config-panel { background: #f1f6f4; }
-    .subject-config-card { background: #fff; border-color: var(--line); box-shadow: 0 8px 18px rgba(35, 61, 56, 0.06); }
-    .subject-card-badge { color: var(--accent); background: var(--accent-soft); border-color: #bfe3d5; }
+    .config-panel { background: rgba(202, 240, 248, .48); }
+    .subject-config-card { background: #fff; border-color: var(--line); box-shadow: 0 8px 18px rgba(3, 4, 94, 0.06); }
+    .subject-card-badge { color: var(--ink); background: var(--accent-soft); border-color: #90E0EF; }
     .table-responsive { border-color: var(--line); }
     th { background: var(--accent-soft); }
     td { border-bottom-color: var(--line); }
     .announcement-select { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
-    .subject-chip { border-color: #bfe3d5; background: var(--accent-soft); color: var(--accent); }
+    .subject-chip { border-color: #90E0EF; background: var(--accent-soft); color: var(--ink); }
     .subject-chip.active { background: var(--accent); color: #fff; }
     .announcement-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
     .teacher-input-toolbar {
@@ -1057,26 +1057,35 @@
       flex-wrap: wrap;
       padding: 16px;
       margin-bottom: 14px;
-      background: #f1f6f4;
+      background: rgba(202, 240, 248, .48);
       border: 1px solid var(--line);
       border-radius: 14px;
     }
     .teacher-input-toolbar label { display: grid; gap: 5px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .teacher-input-toolbar select { min-width: 220px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: #fff; color: var(--ink); font: inherit; font-size: 13px; font-weight: 700; }
+    .teacher-input-toolbar input[type="number"] { width: 120px; min-height: 42px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 9px; background: #fff; color: var(--ink); font: inherit; font-size: 13px; font-weight: 700; }
     .input-progress { color: var(--muted); font-size: 12px; line-height: 1.5; }
     .input-progress strong { display: block; color: var(--accent); font-size: 15px; }
     .subject-input-section { margin-bottom: 18px; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(35, 61, 56, 0.06); }
-    .subject-input-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; background: #f1f6f4; border-bottom: 1px solid var(--line); }
+    .subject-input-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; background: rgba(202, 240, 248, .48); border-bottom: 1px solid var(--line); }
     .subject-input-heading h3 { color: var(--ink); font-size: 15px; }
     .subject-input-heading span { color: var(--muted); font-size: 11px; font-weight: 700; }
     .subject-input-section .table-responsive { border: 0; border-radius: 0; }
     .subject-input-section table { min-width: 700px; }
     .subject-input-section td input[type="number"] { width: 110px; }
-    .teacher-subject-workspace { margin-top: 20px; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: #f8fbfa; box-shadow: inset 0 1px 0 rgba(255,255,255,.9); }
+    .subject-input-section input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
+    .subject-input-section input[type="number"]::-webkit-inner-spin-button,
+    .subject-input-section input[type="number"]::-webkit-outer-spin-button { margin: 0; -webkit-appearance: none; }
+    @media (min-width: 561px) {
+      .subject-input-section th:first-child,
+      .subject-input-section td:first-child { width: 88px; min-width: 88px; text-align: center; }
+      .subject-input-section td:first-child input { max-width: 72px; padding-inline: 6px; text-align: center; }
+    }
+    .teacher-subject-workspace { margin-top: 20px; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: #f5fcff; box-shadow: inset 0 1px 0 rgba(255,255,255,.9); }
     .teacher-subject-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
-    .teacher-subject-button { min-height: 42px; padding: 9px 14px; border: 1px solid #c9e2d9; border-radius: 11px; background: #fff; color: var(--muted); cursor: pointer; font-size: 12px; font-weight: 800; transition: .2s ease; }
+    .teacher-subject-button { min-height: 42px; padding: 9px 14px; border: 1px solid #90E0EF; border-radius: 11px; background: #fff; color: var(--muted); cursor: pointer; font-size: 12px; font-weight: 800; transition: .2s ease; }
     .teacher-subject-button:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
-    .teacher-subject-button.active { border-color: var(--accent); background: var(--accent); color: #fff; box-shadow: 0 8px 16px rgba(25,122,103,.18); }
+    .teacher-subject-button.active { border-color: var(--accent); background: var(--accent); color: #fff; box-shadow: 0 8px 16px rgba(0,119,182,.18); }
     .teacher-identity-panel { margin-top: 18px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 10px 24px rgba(35,61,56,.07); }
     .teacher-identity-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
     .teacher-identity-header h3 { color: var(--ink); font-size: 16px; }
@@ -1103,7 +1112,7 @@
     .subject-identity-header h3 { color: var(--ink); font-size: 15px; }
     .subject-identity-grid { display: grid; grid-template-columns: 1.1fr 1fr 1.4fr; gap: 12px; }
     .subject-identity-grid .form-group { margin: 0; }
-    .subject-identity-grid input { width: 100%; min-height: 42px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 10px; background: #f8fbfa; color: var(--ink); }
+    .subject-identity-grid input { width: 100%; min-height: 42px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 10px; background: #f5fcff; color: var(--ink); }
     .subject-identity-visibility { display: flex; align-items: center; gap: 8px; margin-top: 13px; color: var(--muted); font-size: 11px; font-weight: 700; }
     .subject-delete-button { min-height: 34px; padding: 7px 10px; border: 1px solid #f0c7d0; border-radius: 9px; background: #fff6f7; color: #b43a55; cursor: pointer; font-size: 11px; font-weight: 800; }
     @media (max-width: 700px) { .subject-identity-grid { grid-template-columns: 1fr; } }
@@ -1169,7 +1178,7 @@
     .badge-status { box-shadow: none; font-size: 10px; }
     .badge-passed { background: var(--accent-soft); color: var(--accent); }
     .badge-remedial { background: #fff0df; color: var(--warning); animation: none; }
-    .match-info-bar { background: #f1f6f4; border-color: var(--line); color: var(--muted); box-shadow: none; }
+    .match-info-bar { background: rgba(202, 240, 248, .48); border-color: var(--line); color: var(--muted); box-shadow: none; }
     .match-info-bar span { color: var(--accent); }
     @keyframes cardReveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -1287,6 +1296,225 @@
         min-width: 150px;
       }
     }
+
+    .score-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 360px));
+      justify-content: center;
+      gap: 18px;
+      width: 100%;
+      perspective: none;
+    }
+    .fifa-card, .score-grid .fifa-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 360px;
+      min-height: 0;
+      height: auto;
+      padding: 20px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 8px 24px rgba(35, 61, 56, .09);
+      transform: none;
+      transform-style: flat;
+      animation: cardReveal .3s ease both;
+      cursor: default;
+    }
+    .fifa-card::before, .score-grid .fifa-card::before {
+      inset: 0 0 auto;
+      height: 4px;
+      border-radius: 14px 14px 0 0;
+      background: var(--accent);
+    }
+    .fifa-card::after, .score-grid .fifa-card::after { display: none; }
+    .fifa-card:hover, .score-grid .fifa-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(35, 61, 56, .13);
+    }
+    .card-gold, .card-silver, .card-bronze { background: #fff; box-shadow: 0 8px 24px rgba(35, 61, 56, .09); }
+    .card-top, .card-meta, .player-name, .single-stat-box, .status-badge-container { transform: none; }
+    .card-subject-label {
+      display: inline-flex;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0;
+      padding: 5px 8px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 10px;
+      line-height: 1.4;
+      letter-spacing: .06em;
+      transform: none;
+    }
+    .card-top { justify-content: space-between; align-items: center; margin-top: 16px; padding: 0; }
+    .ovr-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      transform: none;
+    }
+    .ovr-rating { color: var(--ink); font-size: 48px; line-height: 1; }
+    .card-type { order: -1; margin: 0; color: var(--muted); font-size: 10px; letter-spacing: .08em; }
+    .player-avatar {
+      width: 58px;
+      height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #f4f8f6;
+      box-shadow: none;
+      font-size: 28px;
+      transform: none;
+    }
+    .player-name {
+      margin: 16px 0 0;
+      padding: 14px 0 0;
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+      background: transparent;
+      text-align: left;
+    }
+    .player-name h3 { color: var(--ink); font-size: 16px; font-weight: 700; letter-spacing: 0; text-transform: none; }
+    .player-absen { margin-top: 4px; color: var(--muted); font-size: 10px; letter-spacing: .04em; }
+    .score-grid .card-meta {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 11px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #f8faf9;
+      box-shadow: none;
+    }
+    .score-grid .card-meta-item { align-items: flex-start; gap: 4px; text-align: left; }
+    .score-grid .card-meta-item span { color: var(--muted); font-size: 9px; letter-spacing: .05em; }
+    .score-grid .card-meta-item strong {
+      min-height: 0;
+      justify-content: flex-start;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+    .score-grid .single-stat-box { display: none; }
+    .status-badge-container { margin-top: auto; padding-top: 14px; text-align: left; }
+    .badge-status { padding: 7px 10px; border-radius: 7px; font-size: 10px; font-weight: 800; letter-spacing: .02em; }
+    .badge-passed { background: #CAF0F8; color: #03045E; }
+    .badge-remedial { background: #03045E; color: #fff; }
+
+    @media (max-width: 560px) {
+      .score-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      .fifa-card, .score-grid .fifa-card { max-width: none; min-height: 0; padding: 10px 8px; border-radius: 10px; }
+      .score-grid .card-subject-label { padding: 4px 6px; font-size: 8px; }
+      .score-grid .card-top { margin-top: 10px; }
+      .score-grid .card-meta { display: none; }
+      .score-grid .ovr-box { min-width: 0; padding: 0; }
+      .score-grid .ovr-rating { font-size: 28px; }
+      .score-grid .card-type { font-size: 8px; }
+      .score-grid .player-avatar { width: 34px; height: 34px; border-radius: 10px; font-size: 18px; }
+      .score-grid .player-name { margin-top: 10px; padding: 9px 0 0; }
+      .score-grid .player-name h3 { font-size: 10px; line-height: 1.2; overflow-wrap: anywhere; }
+      .score-grid .player-absen { font-size: 8px; }
+      .score-grid .status-badge-container { padding-top: 10px; }
+      .score-grid .badge-status { padding: 5px 6px; font-size: 8px; line-height: 1.2; }
+    }
+    .student-page-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 18px;
+      padding: 0 2px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    .student-page-header img { width: 44px; height: 44px; object-fit: contain; }
+    .student-page-header p { margin: 0 0 3px; color: var(--accent); font-size: 9px; font-weight: 800; letter-spacing: .1em; }
+    .student-page-header h1 { margin: 0; color: var(--ink); font-size: 18px; font-weight: 800; }
+    .admin-header { gap: 18px; }
+    .admin-header h2 { margin: 0; color: var(--ink) !important; font-size: 20px !important; }
+    .admin-header p { margin-top: 5px; color: var(--muted) !important; font-size: 12px !important; line-height: 1.5; }
+    .teacher-header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .admin-header .teacher-header-actions button {
+      width: auto;
+      min-height: 40px;
+      margin: 0;
+      padding: 8px 13px;
+      border-radius: 9px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .admin-header .teacher-header-actions .btn-logout { border-color: var(--line); background: #fff; color: var(--ink); }
+    .admin-header .teacher-header-actions .btn-main { background: var(--accent); color: #fff; }
+    @media (max-width: 560px) {
+      .admin-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 8px; }
+      .admin-header > div.teacher-header-actions { display: flex; justify-content: flex-end; width: auto; }
+      .admin-header .teacher-header-actions button { width: auto; min-width: 0; padding-inline: 8px; }
+    }
+    .teacher-dashboard-nav { display: flex; gap: 8px; margin-bottom: 18px; padding: 5px; border: 1px solid var(--line); border-radius: 11px; background: #f5fcff; }
+    .teacher-menu-button { flex: 1; min-height: 40px; padding: 8px 12px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; font-weight: 700; }
+    .teacher-menu-button:hover { background: #CAF0F8; color: var(--ink); }
+    .teacher-menu-button.active { background: #03045E; color: #fff; }
+    .teacher-dashboard-panel[hidden] { display: none !important; }
+    .teacher-dashboard-panel { margin-top: 0; }
+    .teacher-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .teacher-panel-heading h3 { margin: 0; color: var(--ink); font-size: 16px; }
+    .teacher-panel-heading p { margin: 4px 0 0; color: var(--muted); font-size: 11px; }
+    .teacher-profile-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .teacher-profile-grid .form-group { margin: 0; }
+    .teacher-profile-grid input { width: 100%; min-height: 42px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; background: #f5fcff; color: var(--ink); }
+    .teacher-profile-actions { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
+    .teacher-profile-actions button { width: auto; min-height: 40px; margin: 0; padding: 8px 14px; border-radius: 9px; font-size: 12px; }
+    .teacher-profile-status { color: var(--muted); font-size: 11px; }
+    .teacher-identity-panel { padding: 0; border: 0; box-shadow: none; }
+    .teacher-identity-panel .teacher-panel-heading { margin-bottom: 14px; }
+    .teacher-subject-panel .teacher-subject-workspace { margin-top: 14px; }
+    .teacher-subject-panel .btn-add { margin-top: 0; }
+    @media (max-width: 560px) {
+      .teacher-dashboard-nav { gap: 4px; }
+      .teacher-menu-button { min-height: 42px; padding: 7px 4px; font-size: 10px; }
+      .teacher-profile-grid { grid-template-columns: 1fr; gap: 10px; }
+      .teacher-profile-actions { align-items: stretch; flex-wrap: wrap; }
+      .teacher-profile-actions button { flex: 1 1 calc(50% - 8px); }
+      .teacher-profile-status { width: 100%; }
+    }
+    .login-box { width: min(100%, 420px); padding: 0; border-radius: 22px; text-align: left; background: #fff; box-shadow: 0 24px 60px rgba(3, 4, 94, .14), 0 2px 8px rgba(3, 4, 94, .05); }
+    .login-box::before { display: none; }
+    .login-box::after { display: none; }
+    .login-card-header { position: relative; min-height: 170px; padding: 28px 30px 58px; overflow: hidden; background: linear-gradient(125deg, #03045E 0%, #0077B6 72%, #00B4D8 100%); color: #fff; }
+    .login-card-header::after { position: absolute; z-index: 1; right: -8%; bottom: -31px; left: -8%; height: 62px; border-radius: 50% 50% 0 0 / 100% 100% 0 0; background: #fff; content: ""; }
+    .login-brand-row { position: relative; z-index: 2; display: flex; align-items: center; gap: 13px; margin: 0; }
+    .login-brand-mark { display: block; flex: 0 0 64px; width: 64px; height: 64px; object-fit: contain; }
+    .login-box .brand-title { margin: 0; color: #fff; font-size: 22px; font-weight: 800; letter-spacing: .02em; }
+    .login-box .brand-title::before { display: none; content: none; }
+    .login-box .brand-subtitle { margin: 4px 0 0; color: #CAF0F8 !important; font-size: 10px; font-weight: 600; letter-spacing: .02em; line-height: 1.5; text-transform: none; }
+    .login-card-body { position: relative; padding: 3px 30px 28px; background: #fff; }
+    .login-form-title { margin: 0 0 20px; color: var(--ink); font-size: 21px; font-weight: 700; }
+    .login-box .form-group label { margin-bottom: 7px; color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: .02em; }
+    .login-box .form-group input, .login-box .form-group select { min-height: 46px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: #f5fcff; color: var(--ink); font-size: 13px; }
+    .login-box .btn-main { width: 100%; min-height: 46px; margin-top: 8px; border-radius: 9px; background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; }
+    .login-box .toggle-role-btn { display: block; width: 100%; min-height: 40px; margin: 18px 0 0; padding: 13px 0 0; border: 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; text-align: left; text-decoration: none; }
+    .login-box .toggle-role-btn:hover { color: var(--accent); }
+    .login-box .error-msg { padding: 10px 12px; border: 1px solid #90E0EF; border-radius: 8px; background: #CAF0F8; color: #03045E; font-size: 12px; line-height: 1.5; }
+    @media (max-width: 560px) {
+      .login-card-header { min-height: 154px; padding: 24px 22px 52px; }
+      .login-brand-mark { flex-basis: 56px; width: 56px; height: 56px; }
+      .login-card-body { padding: 3px 22px 24px; }
+      .login-box .brand-title { font-size: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -1298,40 +1526,58 @@
 
   <!-- ================= 1. LOGIN SECTION ================= -->
   <div class="login-box" id="loginSection">
-    <div class="brand-title">PORTAL NILAI</div>
-    <div class="brand-subtitle" id="loginSubtitle">KELAS V SD NEGERI PENGKOL</div>
-
-    <form id="studentLoginForm">
-      <div class="form-group">
-        <label>PILIH NAMA SISWA / ABSEN</label>
-        <select id="studentSelect" required>
-          <option value="" disabled selected>Memuat data dari Firebase...</option>
-        </select>
+    <header class="login-card-header">
+      <div class="login-brand-row">
+        <img class="login-brand-mark" src="logo.png" alt="Logo Portal Nilai">
+        <div>
+          <div class="brand-title">PORTAL NILAI</div>
+          <div class="brand-subtitle" id="loginSubtitle">KELAS V SD NEGERI PENGKOL</div>
+        </div>
       </div>
-      <div class="form-group">
-        <label>PASSWORD SECURITY</label>
-        <input type="password" id="studentPass" placeholder="Masukkan Password Siswa" required>
-      </div>
-      <button type="submit" class="btn-main">LIHAT KARTU NILAI SISWA</button>
-    </form>
+    </header>
 
-    <form id="teacherLoginForm" style="display: none;">
-      <div class="form-group">
-        <label>PASSWORD ADMIN GURU</label>
-        <input type="password" id="teacherPass" placeholder="Masukkan Password Guru" required>
-      </div>
-      <button type="submit" class="btn-main">MASUK DASHBOARD GURU</button>
-    </form>
+    <div class="login-card-body">
+      <h1 class="login-form-title">Login</h1>
+      <form id="studentLoginForm">
+        <div class="form-group">
+          <label>PILIH NAMA SISWA / ABSEN</label>
+          <select id="studentSelect" required>
+            <option value="" disabled selected>Memuat data dari Firebase...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>PASSWORD SECURITY</label>
+          <input type="password" id="studentPass" placeholder="Masukkan Password Siswa" required>
+        </div>
+        <button type="submit" class="btn-main">LIHAT KARTU NILAI SISWA</button>
+      </form>
 
-    <div class="error-msg" id="loginError">Password atau Username Salah!</div>
+      <form id="teacherLoginForm" style="display: none;">
+        <div class="form-group">
+          <label>PASSWORD ADMIN GURU</label>
+          <input type="password" id="teacherPass" placeholder="Masukkan Password Guru" required>
+        </div>
+        <button type="submit" class="btn-main">MASUK DASHBOARD GURU</button>
+      </form>
 
-    <button class="toggle-role-btn" id="btnToggleRole">
-      Beralih ke Login Guru →
-    </button>
+      <div class="error-msg" id="loginError">Password atau Username Salah!</div>
+
+      <button class="toggle-role-btn" id="btnToggleRole">
+        Beralih ke Login Guru →
+      </button>
+    </div>
   </div>
 
   <!-- ================= 2. DASHBOARD SISWA ================= -->
   <div class="view-container" id="studentSection">
+    <header class="student-page-header">
+      <img src="logo.png" alt="Logo Portal Nilai">
+      <div>
+        <p>KELAS V SD NEGERI PENGKOL</p>
+        <h1>PORTAL NILAI</h1>
+      </div>
+    </header>
+
     <div class="fifa-card" id="fifaCard">
       <div class="card-top">
         <div class="ovr-box">
@@ -1377,33 +1623,56 @@
     <div class="admin-card">
       <div class="admin-header">
         <div>
-          <h2 style="color: #00FFCC; font-size: 20px;">DASHBOARD GURU / ADMIN</h2>
-          <p style="font-size: 12px; color: #94A3B8;">Terhubung Langsung ke Firebase Realtime Database</p>
+          <h2>DASHBOARD GURU</h2>
+          <p>Pengelolaan nilai dan data kelas</p>
         </div>
-        <div style="display:flex; gap:8px; align-items:center;">
-          <button class="btn-logout" id="btnLogoutTeacher" style="margin-top: 0;">Logout Guru</button>
-          <button class="btn-main" id="btnChangeTeacherPass" style="background: linear-gradient(90deg,#FFB86B,#FF7BAC); padding:6px 10px; font-size:12px; border-radius:12px;">Ubah Password</button>
+        <div class="teacher-header-actions">
+          <button class="btn-logout" id="btnLogoutTeacher">Logout Guru</button>
         </div>
       </div>
 
-      <div style="display:flex; justify-content:flex-start; margin: 0 0 18px;">
-        <button class="btn-add" id="btnAddSubject" type="button">+ Tambah Mata Pelajaran</button>
-      </div>
+      <nav class="teacher-dashboard-nav" role="tablist" aria-label="Menu dashboard guru">
+        <button type="button" class="teacher-menu-button active" role="tab" aria-selected="true" aria-controls="teacherProfilePanel" data-teacher-menu="profile">Identitas Guru</button>
+        <button type="button" class="teacher-menu-button" role="tab" aria-selected="false" aria-controls="teacherStudentsPanel" data-teacher-menu="students">Database Siswa</button>
+        <button type="button" class="teacher-menu-button" role="tab" aria-selected="false" aria-controls="teacherSubjectsPanel" data-teacher-menu="subjects">Mata Pelajaran</button>
+      </nav>
 
-      <div class="teacher-subject-workspace">
-        <div class="teacher-subject-nav" id="teacherSubjectNav" aria-label="Pilih mata pelajaran"></div>
-      </div>
-
-      <div class="teacher-identity-panel">
-        <div class="teacher-identity-header">
-          <div>
-            <h3>Identitas Siswa</h3>
-            <p>Kelola nomor absen, nama siswa, dan password.</p>
+      <section class="teacher-dashboard-panel" id="teacherProfilePanel" role="tabpanel">
+        <div class="teacher-panel-heading">
+          <div><h3>Identitas Guru</h3><p>Lengkapi informasi guru dan kelas.</p></div>
+        </div>
+        <form id="teacherProfileForm">
+          <div class="teacher-profile-grid">
+            <div class="form-group"><label for="teacherName">NAMA GURU</label><input id="teacherName" type="text" autocomplete="name" placeholder="Nama lengkap guru"></div>
+            <div class="form-group"><label for="teacherNip">NIP</label><input id="teacherNip" type="text" inputmode="numeric" placeholder="Nomor induk pegawai"></div>
+            <div class="form-group"><label for="teacherSchool">SEKOLAH</label><input id="teacherSchool" type="text" placeholder="Nama sekolah"></div>
+            <div class="form-group"><label for="teacherClass">KELAS</label><input id="teacherClass" type="text" placeholder="Contoh: V"></div>
           </div>
+          <div class="teacher-profile-actions">
+            <button class="btn-add" type="submit">Simpan Identitas</button>
+            <button class="btn-main" id="btnChangeTeacherPass" type="button">Ubah Password Guru</button>
+            <span class="teacher-profile-status" id="teacherProfileSaveStatus" aria-live="polite"></span>
+          </div>
+        </form>
+      </section>
+
+      <section class="teacher-dashboard-panel teacher-identity-panel" id="teacherStudentsPanel" role="tabpanel" hidden>
+        <div class="teacher-panel-heading">
+          <div><h3>Database Siswa</h3><p>Kelola nomor absen, nama siswa, dan password.</p></div>
           <span id="teacherIdentityCount">0 siswa</span>
         </div>
         <div class="table-responsive" id="studentIdentityTable"></div>
-      </div>
+      </section>
+
+      <section class="teacher-dashboard-panel teacher-subject-panel" id="teacherSubjectsPanel" role="tabpanel" hidden>
+        <div class="teacher-panel-heading">
+          <div><h3>Mata Pelajaran</h3><p>Tambah mata pelajaran atau pilih mapel untuk mengelola nilainya.</p></div>
+          <button class="btn-add" id="btnAddSubject" type="button">+ Tambah Mapel</button>
+        </div>
+        <div class="teacher-subject-workspace">
+          <div class="teacher-subject-nav" id="teacherSubjectNav" aria-label="Pilih mata pelajaran"></div>
+        </div>
+      </section>
     </div>
   </div>
 
@@ -1429,6 +1698,9 @@
     </div>
     <div class="teacher-input-toolbar">
       <div class="input-progress" id="subjectPageProgress"><strong>Siap mengisi nilai</strong>Perubahan tersimpan otomatis</div>
+      <label for="activeSubjectPassingScore">Batas kelulusan
+        <input id="activeSubjectPassingScore" type="number" min="0" max="100" step="1" value="75" aria-label="Nilai batas kelulusan">
+      </label>
     </div>
     <div class="subject-input-note">Tabel ini hanya untuk memasukkan nilai mata pelajaran yang dipilih.</div>
     <div class="subject-page-table" id="subjectPageTable"></div>
@@ -1486,7 +1758,8 @@
         { name: "IPA", date: "18 AGUSTUS 2026", bab: "SISTEM TUBUH MANUSIA", visible: true }
       ],
       date: "15 AGUSTUS 2026",
-      bab: "ALJABAR & GEOMETRI"
+      bab: "ALJABAR & GEOMETRI",
+      teacherProfile: { name: "", nip: "", school: "SD NEGERI PENGKOL", className: "V" }
     };
 
     const savedConfig = localStorage.getItem('transkripNilaiConfig');
@@ -1505,6 +1778,30 @@
       localStorage.setItem('transkripNilaiConfig', JSON.stringify(configData));
     }
 
+    function getTeacherProfile() {
+      return {
+        name: "",
+        nip: "",
+        school: "SD NEGERI PENGKOL",
+        className: "V",
+        ...(configData.teacherProfile || {})
+      };
+    }
+
+    function renderTeacherProfile() {
+      const profile = getTeacherProfile();
+      document.getElementById("teacherName").value = profile.name;
+      document.getElementById("teacherNip").value = profile.nip;
+      document.getElementById("teacherSchool").value = profile.school;
+      document.getElementById("teacherClass").value = profile.className;
+    }
+
+    function updateLoginSubtitle() {
+      const profile = getTeacherProfile();
+      const subtitle = [profile.className ? `KELAS ${profile.className}` : "", profile.school].filter(Boolean).join(" • ");
+      document.getElementById("loginSubtitle").innerText = subtitle || "PORTAL SISWA";
+    }
+
     function mergeConfigWithSavedSelection(nextConfig) {
       const saved = (() => {
         try {
@@ -1521,11 +1818,13 @@
       const mergedSubjects = baseSubjects.map(item => {
         const key = String(item.name || '').trim().toUpperCase();
         const savedItem = savedMap.get(key) || {};
+        const passingScore = Number(item.passingScore ?? savedItem.passingScore);
         return {
           ...item,
           name: item.name || savedItem.name || 'MAPEL',
           date: item.date || savedItem.date || '',
           bab: item.bab || savedItem.bab || '',
+          passingScore: Number.isFinite(passingScore) ? Math.max(0, Math.min(100, passingScore)) : 75,
           visible: item.visible !== false && savedItem.visible !== false
         };
       });
@@ -1575,6 +1874,7 @@
           name: item.name.trim(),
           date: item.date || "",
           bab: item.bab || "",
+          passingScore: Number.isFinite(Number(item.passingScore)) ? Math.max(0, Math.min(100, Number(item.passingScore))) : 75,
           visible: item.visible !== false
         }));
     }
@@ -1593,7 +1893,9 @@
       if (data) {
         configData = mergeConfigWithSavedSelection(data);
         persistLocalConfig();
+        updateLoginSubtitle();
         if(isTeacherMode) {
+          renderTeacherProfile();
           renderTeacherSubjectNavigation();
           renderStudentTable();
         }
@@ -1703,44 +2005,39 @@
     function buildCardMarkup(student, subjectName, scoreValue) {
       const score = Number(scoreValue) || 0;
       const cardStyle = getCardClass(score);
-      const badge = score < 75
-        ? "<span class=\"badge-status badge-remedial\">⚠️ TUNTUTAN REMIDI / MENGULANG</span>"
-        : "<span class=\"badge-status badge-passed\">LULUS / KUALIFIKASI AMAN 🏆</span>";
+      const subjectMeta = getConfiguredSubjects().find(item => item.name === subjectName) || getConfiguredSubjects()[0] || { name: subjectName, date: "", passingScore: 75 };
+      const badge = score < subjectMeta.passingScore
+        ? "<span class=\"badge-status badge-remedial\">REMIDI</span>"
+        : "<span class=\"badge-status badge-passed\">LULUS</span>";
 
-      const subjectMeta = getConfiguredSubjects().find(item => item.name === subjectName) || getConfiguredSubjects()[0] || { name: subjectName, date: "" };
       const subjectDate = subjectMeta.date || "-";
 
       return `
         <div class="${cardStyle.className}">
-          <div class="card-top">
-            <div class="ovr-box">
-              <div class="ovr-rating">${score}</div>
-              <div class="card-type">${cardStyle.type}</div>
-            </div>
-            <div class="player-avatar">${student.avatar || "👨‍🎓"}</div>
-          </div>
-
           <div class="card-subject-label">${subjectName}</div>
-
-          <div class="card-meta">
-            <div class="card-meta-item">
-              <span>Mapel</span>
-              <strong>${subjectName}</strong>
-            </div>
-            <div class="card-meta-item">
-              <span>Tanggal</span>
-              <strong>${subjectDate}</strong>
-            </div>
-          </div>
 
           <div class="player-name">
             <h3>${student.name}</h3>
             <div class="player-absen">NO ABSEN: ${student.id}</div>
           </div>
 
-          <div class="single-stat-box">
-            <div class="single-stat-lbl">${subjectName}</div>
-            <div class="single-stat-val">${score}</div>
+          <div class="card-top">
+            <div class="ovr-box">
+              <div class="ovr-rating">${score}</div>
+              <div class="card-type">NILAI</div>
+            </div>
+            <div class="player-avatar">${student.avatar || "👨‍🎓"}</div>
+          </div>
+
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <span>Materi</span>
+              <strong>${subjectMeta.bab || "Ulangan Harian"}</strong>
+            </div>
+            <div class="card-meta-item">
+              <span>Tanggal</span>
+              <strong>${subjectDate}</strong>
+            </div>
           </div>
 
           <div class="status-badge-container">${badge}</div>
@@ -1865,8 +2162,8 @@
       card.className = cardStyle.className;
       cardType.innerText = cardStyle.type;
 
-      if (score < 75) {
-        badge.innerText = "⚠️ TUNTUTAN REMIDI / MENGULANG";
+      if (score < Number(subjectMeta.passingScore ?? 75)) {
+        badge.innerText = "⚠️ REMIDI";
         badge.className = "badge-status badge-remedial";
       } else {
         badge.innerText = "LULUS / KUALIFIKASI AMAN 🏆";
@@ -1890,9 +2187,41 @@
       document.getElementById("subjectInputPage").style.display = "none";
       teacherInputPageOpen = false;
 
+      setTeacherMenu("profile");
+      renderTeacherProfile();
       renderTeacherSubjectNavigation();
       renderStudentTable();
     }
+
+    function setTeacherMenu(menuName) {
+      document.querySelectorAll(".teacher-menu-button").forEach(button => {
+        const isActive = button.dataset.teacherMenu === menuName;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-selected", String(isActive));
+        document.getElementById(button.getAttribute("aria-controls")).hidden = !isActive;
+      });
+    }
+
+    document.querySelectorAll(".teacher-menu-button").forEach(button => {
+      button.addEventListener("click", () => setTeacherMenu(button.dataset.teacherMenu));
+    });
+
+    document.getElementById("teacherProfileForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      configData.teacherProfile = {
+        name: document.getElementById("teacherName").value.trim(),
+        nip: document.getElementById("teacherNip").value.trim(),
+        school: document.getElementById("teacherSchool").value.trim(),
+        className: document.getElementById("teacherClass").value.trim()
+      };
+      persistLocalConfig();
+      updateLoginSubtitle();
+      const status = document.getElementById("teacherProfileSaveStatus");
+      status.innerText = "Menyimpan...";
+      set(ref(db, "config"), configData)
+        .then(() => { status.innerText = "Identitas tersimpan."; })
+        .catch(() => { status.innerText = "Gagal menyimpan identitas."; });
+    });
 
     function showSubjectInputPage(subjectName) {
       activeTeacherSubject = subjectName;
@@ -1911,6 +2240,7 @@
       document.getElementById("activeSubjectDate").value = subject.date || "";
       document.getElementById("activeSubjectBab").value = subject.bab || "";
       document.getElementById("activeSubjectVisible").checked = subject.visible !== false;
+      document.getElementById("activeSubjectPassingScore").value = subject.passingScore ?? 75;
     }
 
     function saveActiveSubjectIdentity() {
@@ -1922,6 +2252,8 @@
       subject.date = document.getElementById("activeSubjectDate").value.trim().toUpperCase();
       subject.bab = document.getElementById("activeSubjectBab").value.trim().toUpperCase();
       subject.visible = document.getElementById("activeSubjectVisible").checked;
+      const passingScore = Number(document.getElementById("activeSubjectPassingScore").value);
+      subject.passingScore = Number.isFinite(passingScore) ? Math.max(0, Math.min(100, passingScore)) : 75;
       activeTeacherSubject = nextName;
       configData.subject = configData.subjects[0].name;
       configData.date = configData.subjects[0].date || "";
@@ -2053,7 +2385,7 @@
       showSubjectInputPage(activeTeacherSubject);
     });
 
-    ["activeSubjectName", "activeSubjectDate", "activeSubjectBab", "activeSubjectVisible"].forEach(id => {
+    ["activeSubjectName", "activeSubjectDate", "activeSubjectBab", "activeSubjectVisible", "activeSubjectPassingScore"].forEach(id => {
       document.getElementById(id).addEventListener("change", saveActiveSubjectIdentity);
     });
 
@@ -2171,6 +2503,17 @@
         renderStudentTable();
       }));
 
+      const scoreInputs = [...container.querySelectorAll('input[data-field="score"]')];
+      scoreInputs.forEach((input, index) => input.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+        event.preventDefault();
+        const nextInput = scoreInputs[index + (event.key === "ArrowDown" ? 1 : -1)];
+        if (nextInput) {
+          nextInput.focus();
+          nextInput.select();
+        }
+      }));
+
       container.querySelectorAll(".btn-del").forEach(button => button.addEventListener("click", (event) => {
         if (confirm("Yakin ingin menghapus siswa ini?")) {
           studentDatabase.splice(event.target.dataset.idx, 1);
@@ -2199,6 +2542,7 @@
       teacherInputPageOpen = false;
       document.getElementById("subjectInputPage").style.display = "none";
       document.getElementById("teacherSection").style.display = "flex";
+      setTeacherMenu("subjects");
       renderTeacherSubjectNavigation();
       renderStudentTable();
     });
